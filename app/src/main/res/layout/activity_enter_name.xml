@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EnterName"
-    android:background="@drawable/welcomepagebackground">
+    android:background="@drawable/welcomepagebackground"
+    android:onClick="rootlayouttap"
+    tools:context=".EnterName">
 
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/namebackground"
-        android:hint="Name"
         android:gravity="center"
+        android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +26,10 @@
         android:id="@+id/welcomenext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/welcomenext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.8"
+        app:srcCompat="@drawable/welcomenext" />
 </androidx.constraintlayout.widget.ConstraintLayout>

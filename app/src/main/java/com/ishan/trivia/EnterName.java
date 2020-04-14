@@ -2,9 +2,12 @@ package com.ishan.trivia;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,6 +39,12 @@ public class EnterName extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Condition for Empty Field
+                String name =userName.getText().toString();
+                if(TextUtils.isEmpty(name)){
+                    Toast.makeText(getApplicationContext(),"Field Empty",Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 uploadNameNDate(); //function to upload data
 
@@ -52,6 +61,18 @@ public class EnterName extends AppCompatActivity {
         //upload data to database in this function
         // time is variable for time
         //userName.getText().toString() to get name
+    }
+
+    //Function to Hide Keyboard by tapping on view.
+    public void rootlayouttap(View view)
+    {
+        try {
+            InputMethodManager methodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            methodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }catch (Exception e)
+        {
+
+        }
     }
 
     //On Back Press

@@ -7,6 +7,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -59,6 +60,13 @@ public class QuestionActivity extends AppCompatActivity {
     }
 
     private void onButtonClicked() {
+
+        //Condition for Empty Field
+        if(!option1.isChecked() && !option2.isChecked() && !option3.isChecked() && !option4.isChecked())
+        {
+            Toast.makeText(getApplicationContext(),"No Answer Selected",Toast.LENGTH_SHORT).show();
+            return;
+        }
         //index=0 implies question 1
         if (questionIndex == 0) {
 
@@ -206,6 +214,7 @@ public class QuestionActivity extends AppCompatActivity {
 
 
     }
+
 
     //Disabled Back Button
     @Override
