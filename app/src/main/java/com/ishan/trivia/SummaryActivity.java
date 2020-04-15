@@ -1,6 +1,8 @@
 package com.ishan.trivia;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +19,9 @@ public class SummaryActivity extends AppCompatActivity {
     private String[] data;
 
     private TextView name,ans1,ans2;
+
+    private SQLiteDatabase sqLiteDatabaseObj;
+    private String SQLiteDataBaseQueryHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,11 @@ public class SummaryActivity extends AppCompatActivity {
         //data[1] is time
         //data[2] is ans1
         //data[3] is ans2
+
+        sqLiteDatabaseObj = openOrCreateDatabase(SQLiteHelper.DATABASE_NAME, Context.MODE_PRIVATE, null);
+        sqLiteDatabaseObj.execSQL("CREATE TABLE IF NOT EXISTS "+SQLiteHelper.TABLE_NAME+"("+SQLiteHelper.Table_Column_ID+" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+SQLiteHelper.Table_Column_1_Name+" VARCHAR, "+SQLiteHelper.Table_Column_2_Ans1+" VARCHAR, "+SQLiteHelper.Table_Column_3_Ans2+" VARCHAR, "+SQLiteHelper.Table_Column_4_Time+" VARCHAR);");
+        SQLiteDataBaseQueryHolder = "INSERT INTO "+SQLiteHelper.TABLE_NAME+" (name,ans1,ans2,time) VALUES('"+data[0]+"', '"+data[2]+"', '"+data[3]+"', '"+ data[1] +"');";
+        sqLiteDatabaseObj.execSQL(SQLiteDataBaseQueryHolder);
 
     }
 
