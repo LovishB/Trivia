@@ -31,10 +31,16 @@ public class QuestionActivity extends AppCompatActivity {
     private String ans1;
     private String ans2;
 
+    private Intent mIntent;
+    private String[] data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
+        mIntent=getIntent();
+        data =mIntent.getStringArrayExtra("Data");
 
         question = findViewById(R.id.question);
         option1 = findViewById(R.id.option1);
@@ -86,6 +92,7 @@ public class QuestionActivity extends AppCompatActivity {
             //After question 2
             //Intent to Summary Activity
             Intent intent = new Intent(getApplicationContext(), SummaryActivity.class);
+            intent.putExtra("Data",data);
             startActivity(intent);
         } else {
 
@@ -186,7 +193,7 @@ public class QuestionActivity extends AppCompatActivity {
                 } else if (option4.isChecked()) {
                     ans1 = option4.getText().toString();
                 }
-                //upload ans1 from here
+                data[2]=ans1;
 
             } else if (questionIndex == 1) {
 
@@ -207,7 +214,7 @@ public class QuestionActivity extends AppCompatActivity {
 
                 ans2=ans2.substring(0,ans2.length()-1);
 
-                //upload ans2 from here
+                data[3]=ans2;
 
             }
 

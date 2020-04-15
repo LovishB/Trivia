@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
 
+
     private ImageView finish;
     private RecyclerView mRecyclerView;
     private HistoryCustomAdapter mAdapter;

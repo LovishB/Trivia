@@ -46,10 +46,11 @@ public class EnterName extends AppCompatActivity {
                     return;
                 }
 
-                uploadNameNDate(); //function to upload data
 
+                String[] data={userName.getText().toString(),time," "," "};
                 //After Uploading intent to Next Activity
                 Intent intent=new Intent(getBaseContext(),QuestionActivity.class);
+                intent.putExtra("Data",data);
                 startActivity(intent);
 
 
@@ -57,11 +58,6 @@ public class EnterName extends AppCompatActivity {
         });
     }
 
-    private void uploadNameNDate(){
-        //upload data to database in this function
-        // time is variable for time
-        //userName.getText().toString() to get name
-    }
 
     //Function to Hide Keyboard by tapping on view.
     public void rootlayouttap(View view)
