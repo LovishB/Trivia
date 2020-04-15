@@ -85,9 +85,9 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         //Adding data to Model
-        for(int i=0;i<NAME_Array.size();i++){
+        for(int i=NAME_Array.size()-1;i>=0;i--){
 
-            data.add(new AddingItemsHistoryModel("GAME"+(i+1),Time_Array.get(i),"Name : "+NAME_Array.get(i),
+            data.add(new AddingItemsHistoryModel("GAME "+(i+1),Time_Array.get(i),"Name : "+NAME_Array.get(i),
                     "Answer: "+Ans1_Array.get(i),"Answer: "+Ans2_Array.get(i)));
 
         }
