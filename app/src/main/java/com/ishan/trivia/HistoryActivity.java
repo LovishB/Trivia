@@ -74,6 +74,7 @@ public class HistoryActivity extends AppCompatActivity {
         Ans2_Array.clear();
         Time_Array.clear();
 
+        //adding data to respective Arrays - Name,Ans1,Ans2,Time
         if (cursor.moveToFirst()) {
             do {
                 NAME_Array.add(cursor.getString(cursor.getColumnIndex(SQLiteHelper.Table_Column_1_Name)));
@@ -83,6 +84,7 @@ public class HistoryActivity extends AppCompatActivity {
             } while (cursor.moveToNext());
         }
 
+        //Adding data to Model
         for(int i=0;i<NAME_Array.size();i++){
 
             data.add(new AddingItemsHistoryModel("GAME"+(i+1),Time_Array.get(i),"Name : "+NAME_Array.get(i),

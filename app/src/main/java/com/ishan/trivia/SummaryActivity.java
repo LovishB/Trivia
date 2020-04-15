@@ -36,8 +36,9 @@ public class SummaryActivity extends AppCompatActivity {
         name=findViewById(R.id.summary_name);
         ans1=findViewById(R.id.summary_ans1);
         ans2=findViewById(R.id.summary_ans2);
-        //function to load summary for local storage
-        loadData();
+
+        //function to store summary on local storage
+        uploadData();
 
         //intent to Enter Name Activity
         finish.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +62,7 @@ public class SummaryActivity extends AppCompatActivity {
         });
     }
 
-    private void loadData(){
+    private void uploadData(){
 
         name.setText("Hello, "+data[0]);
         ans1.setText("Answer: "+data[2]);
@@ -72,6 +73,7 @@ public class SummaryActivity extends AppCompatActivity {
         //data[2] is ans1
         //data[3] is ans2
 
+        //storing data
         sqLiteDatabaseObj = openOrCreateDatabase(SQLiteHelper.DATABASE_NAME, Context.MODE_PRIVATE, null);
         sqLiteDatabaseObj.execSQL("CREATE TABLE IF NOT EXISTS "+SQLiteHelper.TABLE_NAME+"("+SQLiteHelper.Table_Column_ID+" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "+SQLiteHelper.Table_Column_1_Name+" VARCHAR, "+SQLiteHelper.Table_Column_2_Ans1+" VARCHAR, "+SQLiteHelper.Table_Column_3_Ans2+" VARCHAR, "+SQLiteHelper.Table_Column_4_Time+" VARCHAR);");
         SQLiteDataBaseQueryHolder = "INSERT INTO "+SQLiteHelper.TABLE_NAME+" (name,ans1,ans2,time) VALUES('"+data[0]+"', '"+data[2]+"', '"+data[3]+"', '"+ data[1] +"');";
